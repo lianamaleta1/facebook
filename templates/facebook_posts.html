@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <h2>Bienvenido, {{ user_info.name }}!</h2>
+
+        <h3>Tus publicaciones de Facebook:</h3>
+        <ul>
+        {% for post in user_posts %}
+            <li>{{ post.message }}</li>
+        {% endfor %}
+        </ul>
+
+
+</body>
+</html>

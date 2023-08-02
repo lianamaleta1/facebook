@@ -1,11 +1,13 @@
 from django.db import models
+from django.contrib import admin
 from PIL import ImageFile
 # Create your models here.
 
 class facebookapi(models.Model):
-    nombre = models.CharField(max_length=20, unique=True)
-    url = models.CharField(max_length=200, blank=True)
-    apikey=models.CharField(max_length=200, blank=True)
+    identificador = models.CharField(max_length=20, unique=True,default='')
+    nombre = models.CharField(max_length=200, blank=True,default='')
+    dominio=models.CharField(max_length=200, blank=True,default='')
+    secreto = models.CharField(max_length=200, blank=True, default='')
 
     def __unicode__(self):
         return self.nombre
@@ -19,11 +21,13 @@ class facebookapi(models.Model):
         return f"{self.nombre}"
 
 class cuenta(models.Model):
-    nombre = models.CharField(max_length=20, unique=True)
+    usuario = models.CharField(max_length=20, unique=True,default="")
+    passwor=models.CharField(max_length=50,default="")
     nombreGrupo=models.CharField(max_length=100,verbose_name="Grupo")
     nombrePagina = models.CharField(max_length=100, verbose_name="Pagina")
     linkGrupo= models.URLField(max_length=100, null=True, blank=True)
     linkPaginas = models.URLField( max_length=100, null=True, blank=True)
+
 
     def __unicode__(self):
         return self.nombre
@@ -62,8 +66,12 @@ class publicacion(models.Model):
 
 class imagen(models.Model):
     imagen = models.ImageField(upload_to='image/')
-    publicacion = models.ForeignKey(publicacion,on_delete=models.CASCADE,max_length=100, unique=True)
+    publicacion = models.ForeignKey(publicacion,on_delete=models.CASCADE,max_length=100)
 
 class grupo(models.Model):
     nombre = models.CharField(max_length=100,verbose_name="Grupo")
-    publicacion = models.ForeignKey(publicacion,on_delete=models.CASCADE,max_length=100, unique=True)
+    publicacion = models.ForeignKey(publicacion,on_delete=models.CASCADE,max_length=100)
+class GrupoInline(admin.StackedInline):
+    model = grupo
+class ImagenInline(admin.StackedInline):
+    model = imagen
