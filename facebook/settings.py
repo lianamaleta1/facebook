@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from social_core.backends.facebook import FacebookOAuth2
+from .config import FACEBOOK_APP_ID, FACEBOOK_APP_SECRET
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SOCIAL_AUTH_FACEBOOK_KEY="7303413883008074"
+SOCIAL_AUTH_FACEBOOK_SECRET="1568e9f2245cf90ee187eea2467b4bbe"
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,10 +44,40 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'meta',
-
-
+    'social_django',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'rest_framework',
 
 ]
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        # 'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        #'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v13.0',
+        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,7 +94,7 @@ ROOT_URLCONF = 'facebook.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +102,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -81,9 +116,9 @@ WSGI_APPLICATION = 'facebook.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        },
 }
 
 
@@ -123,9 +158,33 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
+
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media_facebook/'
+
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'templates'),
+)
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuración de autenticación de Facebook
+#SOCIAL_AUTH_FACEBOOK_KEY = FACEBOOK_APP_ID
+#SOCIAL_AUTH_FACEBOOK_SECRET = FACEBOOK_APP_SECRET
+
+
+AUTHENTICATION_BACKENDS = [
+    # ...
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+
+    # ...
+]
