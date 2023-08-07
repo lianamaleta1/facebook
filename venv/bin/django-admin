@@ -1,4 +1,4 @@
-#!/home/liana.maleta/PycharmProjects/pythonProject/facebook/venv/bin/python3
+#!/home/liana/Público/pythonProject/facebook/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
