@@ -12,5 +12,6 @@ urlpatterns = [
     path('rest-auth/facebook/', FacebookLogin.as_view(), name='rest_login_facebook'),
     path('facebook-login/', FacebookLogin.as_view(), name='facebook_login'),
     path('home/',views.home, name='home'),
+    path('token/',views.token, name='token'),
 
 ]

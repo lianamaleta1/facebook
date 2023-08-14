@@ -45,7 +45,6 @@ from django.db import models
 class publicacion(models.Model):
     nombre = models.CharField(max_length=20, unique=True)
     negocio=models.CharField(max_length=100, verbose_name="Negocio")
-    cuentaFac = models.ForeignKey(cuenta,on_delete=models.DO_NOTHING,max_length=100, )
     texto=models.CharField(max_length=500, )
     linkPaginas = models.URLField(max_length=100, null=True, blank=True)
     frecpublicacion=models.FloatField(default=24.0)
@@ -71,7 +70,9 @@ class imagen(models.Model):
 class grupo(models.Model):
     nombre = models.CharField(max_length=100,verbose_name="Grupo")
     publicacion = models.ForeignKey(publicacion,on_delete=models.CASCADE,max_length=100)
+
 class GrupoInline(admin.StackedInline):
     model = grupo
+
 class ImagenInline(admin.StackedInline):
     model = imagen

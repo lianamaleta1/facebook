@@ -6,7 +6,9 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout
 from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
+from facebooktoken import FacebookTokenRefresher
 
+#crear una publicacion desde el panel de administracion, crear un dev con el link q te permita crear la publicacion con los campos necesarios con grap api en una pagina y despues ver como grap api me deja compartirlo hacer hoy OJOOOOOOOOOOOOOO
 class FacebookLogin(SocialLoginView):
     adapter_class = FacebookOAuth2Adapter
 def home(request):
@@ -45,3 +47,12 @@ def facebook_posts(request):
     }
 
     return render(request, 'facebook_posts.html', context)
+
+def token(request):
+    ftr = FacebookTokenRefresher(
+    app_id=700797440051611,
+    app_secret="485c92c8220b87badbe8f6bb5cd02be7",
+    short_access_token="EAAJ9Xx55SZA0BAHmtrLHE3mvthKHW5mbBDXpkW6haI62UBevj8bZB1DWdoGKKtYhevbZBvtyOBHVdC7i3cFmxbO7PaUpjS2yovRO4BWPsNcmRqLzUCcAcU70dkl3WrdrqZAvG1jPWrdcnVJZANKiZCJmqf44vXfNU9kAzA9uqRM0FTzYZBk6P6QYlpQJ2LJiNQZD"
+    )
+
+    results = ftr.refresh()
