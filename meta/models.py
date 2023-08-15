@@ -40,8 +40,6 @@ class cuenta(models.Model):
     def __str__(self):
         return f"{self.nombre}"
 
-from django.db import models
-
 class publicacion(models.Model):
     nombre = models.CharField(max_length=20, unique=True)
     negocio=models.CharField(max_length=100, verbose_name="Negocio")
@@ -74,5 +72,10 @@ class grupo(models.Model):
 class GrupoInline(admin.StackedInline):
     model = grupo
 
-class ImagenInline(admin.StackedInline):
+class ImagenInline(admin.TabularInline):
     model = imagen
+
+#class ImagenInline(admin.StackedInline):
+    #model = imagen
+
+  

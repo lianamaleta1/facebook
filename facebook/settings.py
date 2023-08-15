@@ -30,8 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SOCIAL_AUTH_FACEBOOK_KEY="7303413883008074"
-SOCIAL_AUTH_FACEBOOK_SECRET="1568e9f2245cf90ee187eea2467b4bbe"
+SOCIAL_AUTH_FACEBOOK_KEY="964972194759482" 
+SOCIAL_AUTH_FACEBOOK_SECRET="ed9e2dfbdbbbccbd464cbba448c628b2"
 # Application definition
 
 INSTALLED_APPS = [
@@ -73,8 +73,8 @@ SOCIALACCOUNT_PROVIDERS = {
         'EXCHANGE_TOKEN': True,
         #'LOCALE_FUNC': 'path.to.callable',
         'VERIFIED_EMAIL': False,
-        'VERSION': 'v13.0',
-        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
+        'VERSION': 'v17.0',
+        'GRAPH_API_URL': 'https://graph.facebook.com/v17.0',
     }
 }
 
