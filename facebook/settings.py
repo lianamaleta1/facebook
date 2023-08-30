@@ -167,14 +167,17 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
+
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media_facebook/'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'templates'),
 )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'admin:index'
 
 # Configuración de autenticación de Facebook
 #SOCIAL_AUTH_FACEBOOK_KEY = FACEBOOK_APP_ID

@@ -1,19 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Detalles de la Publicación</title>
 </head>
 <body>
-        <h2>Bienvenido, {{ user_info.name }}!</h2>
-
-        <h3>Tus publicaciones de Facebook:</h3>
-        <ul>
-        {% for post in user_posts %}
-            <li>{{ post.message }}</li>
-        {% endfor %}
-        </ul>
-
-
+    <h1>Detalles de la Publicación</h1>
+    <h2>{{ publicacion.texto }}</h2>
+    
+    {% for imagen_obj in imagenes %}
+        <img src="{{ imagen_obj.imagen.url }}" alt="Imagen de la publicación">
+    {% endfor %}
 </body>
 </html>

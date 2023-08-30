@@ -1,13 +1,13 @@
 from django.db import models
 from django.contrib import admin
 from PIL import ImageFile
+from allauth.socialaccount.models import SocialApp
 # Create your models here.
 
 class facebookapi(models.Model):
-    identificador = models.CharField(max_length=20, unique=True,default='')
-    nombre = models.CharField(max_length=200, blank=True,default='')
-    dominio=models.CharField(max_length=200, blank=True,default='')
-    secreto = models.CharField(max_length=200, blank=True, default='')
+    nombre=models.CharField(max_length=100,verbose_name="Nombre", default='')
+    app=models.ForeignKey(SocialApp,on_delete=models.RESTRICT, default='')
+    token_acceso = models.CharField(max_length=200, blank=True, default='')
 
     def __unicode__(self):
         return self.nombre
@@ -62,18 +62,13 @@ class publicacion(models.Model):
         return f"{self.nombre}"
 
 class imagen(models.Model):
-    imagen = models.ImageField(upload_to='image/')
+    imagen = models.ImageField(upload_to='media/')
     publicacion = models.ForeignKey(publicacion,on_delete=models.CASCADE,max_length=100)
 
 class grupo(models.Model):
     nombre = models.CharField(max_length=100,verbose_name="Grupo")
     publicacion = models.ForeignKey(publicacion,on_delete=models.CASCADE,max_length=100)
 
-class GrupoInline(admin.StackedInline):
-    model = grupo
-
-class ImagenInline(admin.TabularInline):
-    model = imagen
 
 #class ImagenInline(admin.StackedInline):
     #model = imagen
