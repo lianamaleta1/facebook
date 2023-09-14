@@ -1,0 +1,227 @@
+
+ultima version v17.0
+id app:287653947321564
+secreto:b5c92e8b29845e9488740a9309dc261c
+token de acceso:EAAEFnqdZALNwBO0VutUrurWc0NJgLZCesHK8sQ4LNEk7reYCPOYOUgQpAPZAoK638wPCdcjL0TRMoVhWwN00enN76PeWDfFRwTsbkBcbqzDAbkDZCkZByXMf4IvfIDxWAgfXl4wh9NFscLhZAWsee1p0jwOzltGqKiBHCIT5qo98DqZCGVQEVZACipPbmqKH5sgSQ42JWxmis7k1z3ZBmEdHaHVZBCId6zp3chEWI2p24D4fZAyh5xON38mGk6JZA4w0sHRRRooZAVt4ZD
+
+
+CLIENTE-ID:122096860634036767
+name:Melisa 
+
+-----------para el servidor--------------
+xtigervncviewer
+
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpGVXYycEY4ZTVaekR6Z3Jld1JBNHhK@86.48.20.98:39980/?outline=1
+
+-------> token de acceso de larga duracion:----------------------------------
+
+curl -i -X GET "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&
+  client_id=APP-ID&
+  client_secret=APP-SECRET&
+  fb_exchange_token=SHORT-LIVED-USER-ACCESS-TOKEN"
+
+
+curl -i -X GET "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=1673354583174762&client_secret=05569bf31de0e2ddae3961eab8581149&fb_exchange_token=EAAXx6DmDbmoBO9cYAqZAsvQZCH9Mwu5vJbATuCTyEZCF60XrTdedyeJQWoY4S7eAjf99c51FWTv094PTyPxOODSJXklK4qsgFDteBAos06MemEtnENxOcWbJz4Yv6XZBKs0oo5ZAw6lEa9GU95XKZC1ScHmzvYvFkFrps1Dw8rq31ziIfdqBn2wt6TtONAbQtLuaGGlEOJnKefG1DmQoPVuoaZB6kZCWXiOLIWs2LPyav9uPplXDGueVB7EuLlK5pgZDZD"
+
+
+{"access_token":"EAAEFnqdZALNwBO7fvQ1JQMZC1zzAMp6uO1XuuneyCvXPbJgvbWZCkpj09dMg3GkYYdlPGdxaUVnrAWtxb1u4nEiO22h7EQ1mQvIsW4T9r4oG9gJRQ3TlXqlDztl5f5bVZBGUZBxQMXYltBkNS0c7ou25vXDQZCvcodz3jIq671KyZCbguWZA7ICoWpws7c9FqCVG",
+"token_type":"bearer",
+"expires_in":5180218}  
+
+------------------------->Obtener los identificadores de acceso de las páginas que administras---------------------
+
+curl -i -X GET "https://graph.facebook.com/me/accounts?fields=name,access_token" -H "Authorization: Bearer {tu_token_de_acceso}"
+
+
+curl -i -X GET "https://graph.facebook.com/me/accounts?fields=name" -H "Authorization: Bearer EAAEFnqdZALNwBO3oQZBikSKSq1YQsJrBAenPZAuJcCseqWzTNd2kTDdxwN086mNJtv22eZAjNV2IZCA8CupojiNRroIkmnP2lZAvkLhuzNoEiNlaDKdbr9tAcOyWD9dtEhnVx3wocYcb2i2jeLtq0o7ZAlG9iy1VGsWfp8QZB1jj4OcdlITu6ZCGgYezZAlxt8WdJHhxx7tX0ZD"
+
+-------------------->token de acceso de una pagina--------------------
+curl -i -X GET "https://graph.facebook.com/PAGE-ID?
+  fields=access_token&
+  access_token=USER-ACCESS-TOKEN" 
+
+  curl -i -X GET "https://graph.facebook.com/107867655737467?fields=access_token&access_token=EAANtoxjjAzoBO1LIh1s3GXFlj89ZAxWOxHfRUgQ9cff1R4x8wVoHZBMduh1COw3sFIK3pSZBTXiuQc4aG21unRa8Fvyg2boiFPK3TdX7ZAi3fVjnIXKlWZBZAbPO25XSrWuN8AWORmpY3vcULAZCGrCl2t8EMaBCFFzMTZC5BkGm0gEBZCGaIDeCB6IG3"
+
+  {
+    "access_token": "EAAEFnqdZALNwBO3oQZBikSKSq1YQsJrBAenPZAuJcCseqWzTNd2kTDdxwN086mNJtv22eZAjNV2IZCA8CupojiNRroIkmnP2lZAvkLhuzNoEiNlaDKdbr9tAcOyWD9dtEhnVx3wocYcb2i2jeLtq0o7ZAlG9iy1VGsWfp8QZB1jj4OcdlITu6ZCGgYezZAlxt8WdJHhxx7tX0ZD",
+  "id":"107867655737467"}
+
+  ----------->Obtener las publicaciones de una pagina:---------------
+  
+  curl -i -X GET "https://graph.facebook.com/{page-id}/feed
+     ?access_token={access-token}"
+  
+  curl -i -X GET "https://graph.facebook.com/107867655737467/feed?access_token=EAAEFnqdZALNwBO3oQZBikSKSq1YQsJrBAenPZAuJcCseqWzTNd2kTDdxwN086mNJtv22eZAjNV2IZCA8CupojiNRroIkmnP2lZAvkLhuzNoEiNlaDKdbr9tAcOyWD9dtEhnVx3wocYcb2i2jeLtq0o7ZAlG9iy1VGsWfp8QZB1jj4OcdlITu6ZCGgYezZAlxt8WdJHhxx7tX0ZD"
+
+                                            
+ curl -i -X GET "https://graph.facebook.com/107867655737467/feed?message=Hello&fields=created_time,from,id,message&access_token=EAANtoxjjAzoBOxZBp0ZB04oyHQ70G9hiPKrWP8Qv6ygxgQmeZBLOz04OxR7qgZC0CC98bqSBCi0pcAuzRIUeFlPl1bahZADxZBBdOnhftGsh9fo1yTiMakbSt6aCCPEHjPLOjpmoZCAH8f6uiLQvocFoUUyZAlD5tphoE1bO1J7eFkPG2LxOzfOl372XdoWhn78ZD"
+  ---------------------------------------------------------------------
+
+
+Para publicar en una pagina
+curl -i -X POST "https://graph.facebook.com/{page-id}/feed
+  ?message=Hello Fans!
+  &access_token={page-access-token}"
+
+curl -i -X POST "https://graph.facebook.com/107867655737467/feed?message=ProbandohoyDomingo&access_token=EAANtoxjjAzoBO1LIh1s3GXFlj89ZAxWOxHfRUgQ9cff1R4x8wVoHZBMduh1COw3sFIK3pSZBTXiuQc4aG21unRa8Fvyg2boiFPK3TdX7ZAi3fVjnIXKlWZBZAbPO25XSrWuN8AWORmpY3vcULAZCGrCl2t8EMaBCFFzMTZC5BkGm0gEBZCGaIDeCB6IG3"
+
+---------------------------------------Publicar una foto----------------------------------
+curl -i -X POST "https://graph.facebook.com/{page-id}/photos
+    ?url={path-to-photo}
+    &access_token={page-access-token}"
+
+curl -i -X POST "https://graph.facebook.com/107867655737467/photos?url=/media/&access_token=EAANtoxjjAzoBO1LIh1s3GXFlj89ZAxWOxHfRUgQ9cff1R4x8wVoHZBMduh1COw3sFIK3pSZBTXiuQc4aG21unRa8Fvyg2boiFPK3TdX7ZAi3fVjnIXKlWZBZAbPO25XSrWuN8AWORmpY3vcULAZCGrCl2t8EMaBCFFzMTZC5BkGm0gEBZCGaIDeCB6IG3"  
+
+curl -i -X POST "https://graph.facebook.com/107867655737467/photos?file:///home/liana/Público/pythonProject/facebook/static/bg-01.jpg&access_token=EAANtoxjjAzoBOxZBp0ZB04oyHQ70G9hiPKrWP8Qv6ygxgQmeZBLOz04OxR7qgZC0CC98bqSBCi0pcAuzRIUeFlPl1bahZADxZBBdOnhftGsh9fo1yTiMakbSt6aCCPEHjPLOjpmoZCAH8f6uiLQvocFoUUyZAlD5tphoE1bO1J7eFkPG2LxOzfOl372XdoWhn78ZD"
+
+En el POSTMAN:
+Poner en la url:https://graph.facebook.com/v17.0/107867655737467/photos
+
+-en el body poner en la parte de form-data :source de tipo file en el value escoger la imagen 
+-de segundo poner access_token:""
+- en el mismo body donde dice binary escoger la imagen de nuevo 
+
+https://vscode.dev/github/lianamaleta1/facebook/blob/facebooklbe5-3a37727210c8
+
+-------------------------------------Hacer publica una Publicacion--------------------------
+
+También se establece 'published': 'false' para que la imagen no se publique de inmediato, sino que se adjunte a la publicación existente sin cambios adicionales.
+
+
+
+https://graph.facebook.com/107867655737467/feed?message=This%20messag%20is%20para%20gato!!!!!!!!!&acces_token=EAANtoxjjAzoBOxZBp0ZB04oyHQ70G9hiPKrWP8Qv6ygxgQmeZBLOz04OxR7qgZC0CC98bqSBCi0pcAuzRIUeFlPl1bahZADxZBBdOnhftGsh9fo1yTiMakbSt6aCCPEHjPLOjpmoZCAH8f6uiLQvocFoUUyZAlD5tphoE1bO1J7eFkPG2LxOzfOl372XdoWhn78ZD
+
+*-----------------Publicacion con texto en pagina------------------------------------
+     
+curl -X POST "https://graph.facebook.com/v17.0/107867655737467/photos" \
+     -F "access_token=EAAEFnqdZALNwBO3oQZBikSKSq1YQsJrBAenPZAuJcCseqWzTNd2kTDdxwN086mNJtv22eZAjNV2IZCA8CupojiNRroIkmnP2lZAvkLhuzNoEiNlaDKdbr9tAcOyWD9dtEhnVx3wocYcb2i2jeLtq0o7ZAlG9iy1VGsWfp8QZB1jj4OcdlITu6ZCGgYezZAlxt8WdJHhxx7tX0ZD" \
+     -F "message=¡Hola! Esta es mi publicación con texto e imagen." \
+     -F "source=@/home/liana/Público/pythonProject/facebook/media/image/frases-para-facebook-2021.jpg"
+
+curl -X POST "https://graph.facebook.com/v17.0/107867655737467/photos" \
+     -F "access_token=EAANtoxjjAzoBOxZBp0ZB04oyHQ70G9hiPKrWP8Qv6ygxgQmeZBLOz04OxR7qgZC0CC98bqSBCi0pcAuzRIUeFlPl1bahZADxZBBdOnhftGsh9fo1yTiMakbSt6aCCPEHjPLOjpmoZCAH8f6uiLQvocFoUUyZAlD5tphoE1bO1J7eFkPG2LxOzfOl372XdoWhn78ZD" \
+     -F "message=¡Hola! Otra prueba de publicación con texto e imagen." \
+     -F "source=@/home/liana/Público/pythonProject/facebook/media/image/frases-para-facebook-2021.jpg"
+     
+      ----------------------hacer una publicacion con curl------------
+      curl -X POST -F "message=¡Mi nueva publicación!" -F "access_token=TU_TOKEN_DE_ACCESO" "https://graph.facebook.com/{ID_DE_LA_PÁGINA_PRINCIPAL}/feed"  
+
+--------------------------con enlace de la pagina para compartir-----------:
+Como obtener el link de :
+https://www.facebook.com/107867655737467_124109740782789
+
+curl -X POST -F "link=https://www.facebook.com/107867655737467_124109740782789" -F "access_token=EAANtoxjjAzoBOxZBp0ZB04oyHQ70G9hiPKrWP8Qv6ygxgQmeZBLOz04OxR7qgZC0CC98bqSBCi0pcAuzRIUeFlPl1bahZADxZBBdOnhftGsh9fo1yTiMakbSt6aCCPEHjPLOjpmoZCAH8f6uiLQvocFoUUyZAlD5tphoE1bO1J7eFkPG2LxOzfOl372XdoWhn78ZD" "https://graph.facebook.com/103415117816495/feed"
+
+Reemplaza "ENLACE_DE_LA_PUBLICACIÓN" con el enlace de la publicación que deseas compartir y "TU_TOKEN_DE_ACCESO" con el token de acceso obtenido en el paso 1. Además, reemplaza "{ID_DE_LA_PÁGINA}" con el ID de la páb ina de Facebook en la que deseas compartir la publicación.
+
+
+curl -X POST \
+-F "message=¡Mira esta publicación interesante!" \
+-F "link=https://www.facebook.com/107867655737467_125059977354432" \
+-F "access_token=EAAEFnqdZALNwBOxofrunFZA4BUg36V6hDTXx5b6QTthQNQtKXlBPHjqnLmX0TplDwdWqQIptKagNkSX3qwGibD0JdKEQJZCyZAKpJyHgKJ8zKXyWibbLXOtFskfgHXHKMpiNFfbi8ZCBkAd3c3wtA52ca82QZB47djYsZB5FXq0cp4MgrQhsuRMUyCAfv4YdzGNZArr9n4cZD" \
+"https://graph.facebook.com/103415117816495/feed"
+
+-----------------------páginas a las que tienes acceso:--------------------
+
+  curl -i -X GET "https://graph.facebook.com/v13.0/me/accounts?access_token=EAANtoxjjAzoBO3vR7fB8Jdy2eFpBSqMmX5jS6T7h9ZAZCVdHfBaZCFdlZAMzjt0Ou9F78ocOedIGPIdEqdSJ7WHTzCCzgePbctTbAmyituZAyrVwp7YWmVO2Fcbebm8IKUfXaxmlZBcTbL6S4RTDj6uyuxLPrRZCd6n94QLD6BKwZBhXkUZCIHGeDkK0F"
+
+
+-------------------Para ver si el token es valido--------------
+  curl -i -X GET "https://graph.facebook.com/v13.0/me?access_token=EAANtoxjjAzoBO3vR7fB8Jdy2eFpBSqMmX5jS6T7h9ZAZCVdHfBaZCFdlZAMzjt0Ou9F78ocOedIGPIdEqdSJ7WHTzCCzgePbctTbAmyituZAyrVwp7YWmVO2Fcbebm8IKUfXaxmlZBcTbL6S4RTDj6uyuxLPrRZCd6n94QLD6BKwZBhXkUZCIHGeDkK0F"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  -------------GRUPOOOOOOOOOOOOOOOOOOOOOOOO---------------------
+  nombre:Liana Publicaciones Grupito
+  https://www.facebook.com/groups/835141254719072/?ref=share
+  ID:835141254719072
+
+  Para hacer una publicacion:
+  curl -X POST \
+  -d "access_token=EAANtoxjjAzoBO3vR7fB8Jdy2eFpBSqMmX5jS6T7h9ZAZCVdHfBaZCFdlZAMzjt0Ou9F78ocOedIGPIdEqdSJ7WHTzCCzgePbctTbAmyituZAyrVwp7YWmVO2Fcbebm8IKUfXaxmlZBcTbL6S4RTDj6uyuxLPrRZCd6n94QLD6BKwZBhXkUZCIHGeDkK0F" \
+  -d "message=Probando mensaje en el grupo" \
+  "https://graph.facebook.com/v13.0/835141254719072/feed"
+
+----------Para publicar texto con imagen:
+curl -X POST \
+-H "Authorization: Bearer EAAEFnqdZALNwBOw3nmhpLjUrHxdWNIUq629MM4mu14s2B9841TRaFbHhrKWZBSoXxZCiQekdq0xN2IStryzQp6WNiBEtePLS78dd8MGK1crKSTAVISlRw7rmgubz0tFhnov1vEHg0qCle3ZBhXbXwNcWjN0OI7IELDOQIhxrvSBF7RZAJKXcOWWZAwIy77E4hX
+" \
+-F "message=Este es el texto con imagen de la publicación" \
+-F "source=@/home/liana/Público/pythonProject/facebook/media/image/frases-para-facebook-2021.jpg" \
+https://graph.facebook.com/v17.0/2969788086402251/photos
+
+-----------------------------------Compartir publicacion------------------------------
+
+ Como obtener enlace de una publicacion:
+https://www.facebook.com/{post-id}
+
+ID del grupo:474038040393822
+:,NeXperlb,92
+:,NeXperlb,92
+nuevo token de usuario:
+EAAEFnqdZALNwBOw3nmhpLjUrHxdWNIUq62   9MM4mu14s2B9841TRaFbHhrKWZBSoXxZCiQekdq0xN2IStryzQp6WNiBEtePLS78dd8MGK1crKSTAVISlRw7rmgubz0tFhnov1vEHg0qCle3ZBhXbXwNcWjN0OI7IELDOQIhxrvSBF7RZAJKXcOWWZAwIy77E4hX
+
+curl -X POST \
+  -H "Authorization: Bearer EAAEFnqdZALNwBO3fkh2LA8Xs49q0nik1mEJVBkmByC0PBdkElNRoaWzmFsR0WPgtaZB4dWq9svmMFZAzd1MGIbZBYEuPsdjWsdhyXTot7SHsLTit8ZA5ZB8eFsMZAsVTXcx3AxZBSK1O2ZB7YCcsRZBzCNzlcSlm7I7c7Uggs8Vp5H96PFG7nVZCAZCNUeZAwnKGptZBOB" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "message": "Este es el mensaje de la publicación",
+    "link": "https://www.facebook.com/107867655737467_126646397195790",
+    "target_id": "2969788086402251"
+  }' \
+  https://graph.facebook.com/v13.0/2969788086402251/feed
+
+835141254719072
+
+curl -X POST \
+-H "Authorization: Bearer EAAEFnqdZALNwBO7Pb2HAWUIx4MNVZBnnWAqcavSIdN9mvIQtIYFs5ENrRmZByvt0RT32qyzIbP9YrqZBssCfKZA4bcyLZBctkJCYfZAQyQx12muEfRagVzZBPqZApsOK8T6Ob96dYZAEyhSPaD4YQVQCthHjb91VPQWAx0VcVLzsBNIjC24g7QKdtMZALJkcAxuPwyt" \
+-H "Content-Type: application/json" \
+-d '{
+  "message": "Este es un mensaje de prueba",
+  "link": "https://www.facebook.com/107867655737467_126646397195790"
+}' \
+https://graph.facebook.com/v12.0/groups/2969788086402251/feed
+
+
+{
+      "name": "REVOLICO EN LA HABANA",
+      "id": "2969788086402251"
+    },
+    {
+      "name": "Liana Publicación Grupito",
+      "privacy": "OPEN",
+      "id": "835141254719072"
+    },
+    {
+      "name": "VENTA DE USD, MLC y EUROS EN LA HABANA",
+      "id": "5445026015579808"
+    },
+    {
+      "name": "Ferretería en toda la habana",
+      "id": "5219211831508878"
+    },
+    {
+      "name": "Computadoras y partes de computadora honduras",
+      "id": "1031516193621622"
+    }
+id de la publicacion:107867655737467_126091410584622
+id de grupo:2969788086402251
+
+Politica de seguridad: https://www.freeprivacypolicy.com/live/82b45e60-cf00-44a4-a904-957649b649cc

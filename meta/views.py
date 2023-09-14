@@ -138,3 +138,22 @@ def principal(request,id_publicacion):
 
     return render(request, 'facebook_posts.html',context)    
 
+#--------------Creando publicacion en GRUPOS-----------------
+def publicarGrupo(request):
+    
+    url = 'https://graph.facebook.com/v10.0/835141254719072/photos'
+    access_token = 'EAANtoxjjAzoBO3vR7fB8Jdy2eFpBSqMmX5jS6T7h9ZAZCVdHfBaZCFdlZAMzjt0Ou9F78ocOedIGPIdEqdSJ7WHTzCCzgePbctTbAmyituZAyrVwp7YWmVO2Fcbebm8IKUfXaxmlZBcTbL6S4RTDj6uyuxLPrRZCd6n94QLD6BKwZBhXkUZCIHGeDkK0F'
+    message = "Este es el texto de la publicación"
+    image_path = '/home/liana/Público/pythonProject/facebook/media/image/frases-para-facebook-2021.jpg'
+
+    headers = {'Authorization': f'Bearer {access_token}'}
+
+    files = {'source': open(image_path, 'rb')}
+    data = {'message': message}
+
+    response = requests.post(url, headers=headers, files=files, data=data)
+
+    if response.status_code == 200:
+        print('La imagen se cargó exitosamente.')
+    else:
+        print('Error al cargar la imagen:', response.json())
